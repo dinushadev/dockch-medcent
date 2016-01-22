@@ -29,17 +29,21 @@ angular.module('angularMaterialAdmin', ['ngAnimate', 'ngCookies', 'ngTouch',
           title: 'Profile'
         }
       })
-      .state('home.table', {
-        url: '/table',
-        controller: 'TableController',
+      .state('home.appointment', {
+        url: '/appointment',
+        controller: 'AppointmentController',
         controllerAs: 'vm',
-        templateUrl: 'app/views/table.html',
+        templateUrl: 'app/views/appointment.html',
         data: {
           title: 'Table'
         }
       });
 
     $urlRouterProvider.otherwise('/doclist');
+
+    $mdThemingProvider.theme('default')
+      .primaryPalette('blue')
+      .accentPalette('pink');
 
 /*    $mdThemingProvider
       .theme('default')

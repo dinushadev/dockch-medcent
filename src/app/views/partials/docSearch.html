@@ -1,0 +1,24 @@
+<md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+    <div>
+        <md-input-container>
+            <label>fist name</label>
+            <input ng-model="user.title">
+        </md-input-container>
+        <md-input-container>
+            <label>last name</label>
+            <input ng-model="user.email" type="email">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>specialized</label>
+            <md-select ng-model="user.state">
+                <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+                    {{state.abbrev}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button>CLEAR</md-button>
+        <md-button class="md-primary md-raised">SEARCH</md-button>
+    </md-card-actions>
+</md-content>

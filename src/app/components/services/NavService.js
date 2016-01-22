@@ -20,9 +20,9 @@
         sref: '.profile'
       },
       {
-        name: 'APOINTMENT',
-        icon: 'view_module',
-        sref: '.apointment'
+        name: 'APPOINTMENT',
+        icon: 'note add',
+        sref: '.appointment'
       },
       {
         name: 'PROFILE',
@@ -31,12 +31,12 @@
       },
       {
         name: 'NOTIFICATION',
-        icon: 'view_module',
+        icon: 'notification_module',
         sref: '.notification'
       },
       {
         name: 'REPORTS',
-        icon: 'view_module',
+        icon: 'assessment',
         sref: '.reports'
       }
     ];

@@ -10,7 +10,7 @@
                   class="capitalize" ng-click="vm.selectItem(item)"
                  ui-sref-active="md-warn" ui-sref="{{item.sref}}">
           <div hide-sm hide-md class="md-tile-content">
-              <i class="material-icons md-36">{{item.icon}}</i>
+              <i class="material-icons">{{item.icon}}</i>
           </div>
           <div class="md-tile-content">
               {{item.name}}
@@ -45,7 +45,7 @@
         <div ui-view></div>
     </md-content>
 </div>
-
+<!-- 
 <md-sidenav md-component-id="right"
             class="md-whiteframe-z2 md-sidenav-right">
     <md-toolbar>
@@ -73,3 +73,4 @@
         <div ng-include src="'app/views/partials/messages.html'"/>
     </section>
 </md-sidenav>
+ -->

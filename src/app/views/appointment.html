@@ -9,8 +9,7 @@
                     </md-card-title-text>
                 </md-card-title>
                 <md-card-content>
-                    <!-- <md-button class="md-raised md-primary">ADD DOC</md-button> -->
-                    <md-button class="md-primary md-raised" ng-click="searchAandAddDoc($event)" flex="100" flex-gt-md="auto">ADD DOC</md-button>
+                    <div ng-include src="'app/views/partials/docSearch.html'" />
                 </md-card-content>
                 <md-card-actions layout="row" layout-align="end center">
                 </md-card-actions>
@@ -24,9 +23,9 @@
                 </md-card-title>
                 <md-card-content>
                     <md-content laout="column" flex>
-                        <md-toolbar class="md-table-toolbar md-default" ng-show="!selected.length">
+                        <!--  <md-toolbar class="md-table-toolbar md-default" ng-show="!selected.length">
                             <div class="md-toolbar-tools">
-                                <!-- <span>Current Doctors list </span> -->
+         
                                 <span flex></span>
                                 <md-button ng-click="hideCheckboxes = !hideCheckboxes">{{hideCheckboxes ? 'Enable Selection' : 'Disable Selection'}}</md-button>
                                 <md-button ng-click="hideHead = !hideHead">{{hideHead ? 'Show Head' : 'Decapitate'}}</md-button>
@@ -39,8 +38,8 @@
                                     <md-icon>more_vert</md-icon>
                                 </md-button>
                             </div>
-                        </md-toolbar>
-                        <md-toolbar class="md-table-toolbar alternate" ng-show="selected.length">
+                        </md-toolbar> -->
+                      <!--   <md-toolbar class="md-table-toolbar alternate" ng-show="selected.length">
                             <div class="md-toolbar-tools">
                                 <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
                                 <span flex></span>
@@ -51,38 +50,30 @@
                                     <md-icon>more_vert</md-icon>
                                 </md-button>
                             </div>
-                        </md-toolbar>
+                        </md-toolbar> -->
                         <md-table-container>
-                            <table data-md-table data-md-row-select="!hideCheckboxes" data-ng-model="selected" md-progress="promise">
-                                <!-- <thead md-head md-order="query.order">
-      <tr md-row>
-        <th md-column ng-repeat="column in columns" md-numeric="column.numeric" md-order-by="{{column.orderBy}}">
-          <span>{{column.name}}</span>
-          <span ng-if="column.unit">({{column.unit}})</span>
-        </th>
-      </tr>
-    </thead> -->
-                                <thead ng-if="!hideHead" md-head data-md-order="query.order" md-on-reorder="onReorder">
+                            <table md-table ng-model="selected" md-progress="promise">
+                                <thead md-head md-order="query.order" md-on-reorder="onReorder">
                                     <tr md-row>
-                                        <th md-column md:order:by="name"><span>FIST NAME</span></th>
-                                        <th md-column md:order:by="type"><span>LAST NAME</span></th>
+                                         <th md-column ></th>
+                                        <th md-column md:order:by="fistName"><span>FIST NAME</span></th>
+                                        <th md-column md:order:by="lastName"><span>LAST NAME</span></th>
                                         <th md-column data-md-numeric data-md-order-by="calories.value" data-md-desc><span>SPICIALIZED</span></th>
-                                        <th md-column data-md-numeric data-md-order-by="fat.value"><span>REG NO</span></th>
-                                        <th md-column data-md-numeric data-md-order-by="protein.value"><span>[REMOVE]</span></th>
+                                        <th md-column data-md-numeric data-md-order-by="fat.value"><span>AVAILABILITY</span></th>
+                                        <th md-column data-md-numeric data-md-order-by="protein.value"><span>[RESERVE]</span></th>
                                     </tr>
                                 </thead>
-                              
                                 <tbody md-body>
-                                    <tr md-row md:select="doclist" data-md-on-select="log" md-on-deselect="doclist" x-md-auto-select="!blah" data-ng-repeat="doclist in doclist.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+                                    <!--  <tr md-row md:select="doclist" data-md-on-select="log" md-on-deselect="doclist"  data-ng-repeat="doclist in doclist.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit"> -->
+                                    <tr md-row md-select="doclist" md-select-id="{{doclist.name}}" ng-repeat="doclist in doclist.data">
+                                     <th md-cell ></th>
                                         <td md-cell>{{doclist.fistName}}</td>
                                         <td md-cell>{{doclist.lastName}}</td>
                                         <td md-cell>{{doclist.spec}}</td>
-                                        <!-- <td md-cell>{{dessert.carbs.value}}</td> -->
-                                        <td md-cell>{{doclist.regNo}}</td>
-                                        <td md-cell hide-sm>
-                                            <md-button class="md-icon-button " aria-label="Favorite">
-                                                <i class="material-icons">delete</i>
-                                            </md-button>
+                                        <td md-cell>{{doclist.avil}}</td>
+                                        <td md-cell>
+                                            <md-button class="md-fab md-mini"  aria-label="Favorite">
+                                                <span>+</span>
                                         </td>
                                     </tr>
                                 </tbody>
