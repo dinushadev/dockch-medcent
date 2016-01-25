@@ -3,11 +3,11 @@
     angular
         .module('app')
         .controller('docListController', [
-            '$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$mdMedia',
+            '$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$mdMedia','$http',
             docListController
         ]);
 
-    function docListController($mdEditDialog, $q, $scope, $timeout, $mdDialog, $mdMedia) {
+    function docListController($mdEditDialog, $q, $scope, $timeout, $mdDialog, $mdMedia, $http) {
 
 
         $scope.selected = [];
@@ -72,56 +72,13 @@
         ];
 
 
-
-        $scope.doclist = {
-            "count": 6,
-            "data": [{
-                uId: 123,
-                fistName: 'Ajith',
-                lastName: 'Gunawardana',
-                email: 'ajith@gmail.com',
-                tp: '1234567890',
-                spec: 'demata'
-            }, {
-                uId: 123,
-                fistName: 'Sarath',
-                lastName: 'Gunawardana',
-                email: 'ajith@gmail.com',
-                tp: '1234567890',
-                spec: 'demata'
-            }, {
-                uId: 123,
-                fistName: 'Ajith',
-                lastName: 'Willaddarage',
-                email: 'ajith@gmail.com',
-                tp: '1234567890',
-                spec: 'demata'
-            }, {
-                uId: 123,
-                fistName: 'Ajith',
-                lastName: 'Perera',
-                email: 'ajith@gmail.com',
-                tp: '1234567890',
-                spec: 'demata'
-            },{
-                uId: 123,
-                fistName: 'Sarath',
-                lastName: 'Willaddarage',
-                email: 'ajith@gmail.com',
-                tp: '1234567890',
-                spec: 'demata'
-            }, {
-                uId: 123,
-                fistName: 'Anura',
-                lastName: 'De silva',
-                email: 'ajith@gmail.com',
-                tp: '1234567890',
-                spec: 'demata'
-              }
-            ]
-        };
-
-
+ $http.get('app/doclist.json').then(function (doclist) {
+    $scope.doclist = doclist.data;
+    // $timeout(function () {
+    //   $scope.desserts = desserts.data;
+    // }, 1000);
+  });
+     
 
         $scope.getTypes = function() {
             return ['Candy', 'Ice cream', 'Other', 'Pastry'];

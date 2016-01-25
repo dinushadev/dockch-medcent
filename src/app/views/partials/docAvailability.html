@@ -1,0 +1,40 @@
+<md-dialog aria-label="addDocDialog" ng-cloak ng-controller="AppointmentController">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Shamith N Silwa Avaliable in </h2>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <md-content class="md-padding" layout-xs="column" layout="row">
+            <div flex-xs layout="row">
+                <md-card>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Calender </span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <div tiny-calendar today="Today" events="events"></div>
+                    </md-card-content>
+                </md-card>
+                <md-card>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Avaliability</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <p>Avalible </p>
+                        <md-button ng-click="cancel()">
+                            Close
+                        </md-button>
+                        <md-button class="md-primary md-raised" ng-click="cancel()">
+                            Make Apointmet
+                        </md-button>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </md-content>
+    </md-dialog-content>
+</md-dialog>

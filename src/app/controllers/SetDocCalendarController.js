@@ -2,12 +2,12 @@
 
     angular
         .module('app')
-        .controller('AppointmentController', [
+        .controller('SetDocCalendarController', [
             '$timeout', '$q', '$scope', '$http', '$mdMedia', '$mdDialog',
-            AppointmentController
+            SetDocCalendarController
         ]);
 
-    function AppointmentController($timeout, $q, $scope, $http, $mdMedia,$mdDialog) {
+    function SetDocCalendarController($timeout, $q, $scope, $http, $mdMedia,$mdDialog) {
         var vm = this;
 
 
@@ -71,9 +71,7 @@
 
         $http.get('app/doclist.json').then(function(doclist) {
             $scope.doclist = doclist.data;
-            // $timeout(function () {
-            //   $scope.desserts = desserts.data;
-            // }, 1000);
+           
         });
 
         $scope.showAvaliability = function(ev) {

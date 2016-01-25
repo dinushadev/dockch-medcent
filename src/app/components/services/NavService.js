@@ -17,7 +17,7 @@
       {
         name: 'DOC CALENDER',
         icon: 'person',
-        sref: '.profile'
+        sref: '.setdoccalendar'
       },
       {
         name: 'APPOINTMENT',
@@ -27,7 +27,7 @@
       {
         name: 'PROFILE',
         icon: 'view_module',
-        sref: '.profile'
+        sref: '.test'
       },
       {
         name: 'NOTIFICATION',

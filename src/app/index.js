@@ -37,7 +37,17 @@ angular.module('angularMaterialAdmin', ['ngAnimate', 'ngCookies', 'ngTouch',
         data: {
           title: 'Table'
         }
-      });
+      })
+      .state('home.setdoccalendar', {
+        url: '/setdoccalendar',
+        controller: 'SetDocCalendarController',
+        controllerAs: 'vm',
+        templateUrl: 'app/views/setdoccalendar.html',
+        data: {
+          title: 'Table'
+        }
+      })
+     ;
 
     $urlRouterProvider.otherwise('/doclist');
 

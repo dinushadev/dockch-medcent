@@ -1,0 +1,40 @@
+<md-dialog aria-label="setDocCalenderDialog" >
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Set Calender</h2>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <md-content class="md-padding" layout-xs="column" layout="colunm">
+            <div flex-xs layout="row">
+                <md-card>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Calender </span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                          <div ng-include src="'app/views/partials/docSearch.html'"/>
+                    </md-card-content>
+                </md-card>
+                <md-card>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Set Calender</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <p>Avalible </p>
+                        <md-button ng-click="cancel()">
+                            Close
+                        </md-button>
+                        <md-button class="md-primary md-raised" ng-click="cancel()">
+                            SAVE
+                        </md-button>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </md-content>
+    </md-dialog-content>
+</md-dialog>

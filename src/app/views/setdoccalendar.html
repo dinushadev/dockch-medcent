@@ -1,5 +1,6 @@
+
 <div ng-cloak>
-    <md-content class="md-padding" layout="row" layout-wrap layout-align="center start" layout-xs="column" ng-controller="AppointmentController">
+    <md-content class="md-padding" layout="row" layout-wrap layout-align="center start" layout-xs="column" ng-controller="SetDocCalendarController">
         <div flex="100" flex-xs="100" layout="column">
             <md-card>
                 <!--  <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"> -->
@@ -15,7 +16,6 @@
                 </md-card-actions>
             </md-card>
             <md-card>
-                <!--    <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"> -->
                 <md-card-title>
                     <md-card-title-text>
                         <span>DOCTORS</span>
@@ -23,34 +23,7 @@
                 </md-card-title>
                 <md-card-content>
                     <md-content laout="column" flex>
-                        <!--  <md-toolbar class="md-table-toolbar md-default" ng-show="!selected.length">
-                            <div class="md-toolbar-tools">
-         
-                                <span flex></span>
-                                <md-button ng-click="hideCheckboxes = !hideCheckboxes">{{hideCheckboxes ? 'Enable Selection' : 'Disable Selection'}}</md-button>
-                                <md-button ng-click="hideHead = !hideHead">{{hideHead ? 'Show Head' : 'Decapitate'}}</md-button>
-                                <md-button ng-click="blah = !blah">{{blah ? 'turn on' : 'turn off'}}</md-button>
-                                <md-button ng-click="loadStuff()">Load</md-button>
-                                <md-button class="md-icon-button">
-                                    <md-icon>filter_list</md-icon>
-                                </md-button>
-                                <md-button class="md-icon-button">
-                                    <md-icon>more_vert</md-icon>
-                                </md-button>
-                            </div>
-                        </md-toolbar> -->
-                      <!--   <md-toolbar class="md-table-toolbar alternate" ng-show="selected.length">
-                            <div class="md-toolbar-tools">
-                                <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
-                                <span flex></span>
-                                <md-button class="md-icon-button">
-                                    <md-icon>delete</md-icon>
-                                </md-button>
-                                <md-button class="md-icon-button">
-                                    <md-icon>more_vert</md-icon>
-                                </md-button>
-                            </div>
-                        </md-toolbar> -->
+                        
                         <md-table-container>
                             <table md-table ng-model="selected" md-progress="promise">
                                 <thead md-head md-order="query.order" md-on-reorder="onReorder">
