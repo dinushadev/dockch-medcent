@@ -1,6 +1,5 @@
-
 <div ng-cloak>
-    <md-content class="md-padding" layout="row" layout-wrap layout-align="center start" layout-xs="column" ng-controller="SetDocCalendarController">
+    <md-content class="md-padding" layout="row" layout-align="center start" layout-xs="column" ng-controller="SetDocCalendarController as ctrl">
         <div flex="100" flex-xs="100" layout="column">
             <md-card>
                 <!--  <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"> -->
@@ -10,54 +9,101 @@
                     </md-card-title-text>
                 </md-card-title>
                 <md-card-content>
-                    <div ng-include src="'app/views/partials/docSearch.html'" />
+                    <md-autocomplete ng-disabled="ctrl.isDisabled" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item)" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.name" md-min-length="0" placeholder="Pick a Doctor" md-menu-class="autocomplete-custom-template">
+                        <md-item-template>
+                            <span class="item-title">
+                                             <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
+
+                                 <span> {{item.name}} </span>
+                            </span>
+                            <span class="item-metadata">
+                                <span class="item-metastat">
+                                  <strong>{{item.watchers}}</strong> watchers
+                                </span>
+                            </span>
+                        </md-item-template>
+                    </md-autocomplete>
                 </md-card-content>
-                <md-card-actions layout="row" layout-align="end center">
-                </md-card-actions>
             </md-card>
-            <md-card>
-                <md-card-title>
-                    <md-card-title-text>
-                        <span>DOCTORS</span>
-                    </md-card-title-text>
-                </md-card-title>
-                <md-card-content>
-                    <md-content laout="column" flex>
-                        
-                        <md-table-container>
-                            <table md-table ng-model="selected" md-progress="promise">
-                                <thead md-head md-order="query.order" md-on-reorder="onReorder">
-                                    <tr md-row>
-                                         <th md-column ></th>
-                                        <th md-column md:order:by="fistName"><span>FIST NAME</span></th>
-                                        <th md-column md:order:by="lastName"><span>LAST NAME</span></th>
-                                        <th md-column data-md-numeric data-md-order-by="calories.value" data-md-desc><span>SPICIALIZED</span></th>
-                                        <th md-column data-md-numeric data-md-order-by="fat.value"><span>AVAILABILITY</span></th>
-                                        <th md-column data-md-numeric data-md-order-by="protein.value"><span>[RESERVE]</span></th>
-                                    </tr>
-                                </thead>
-                                <tbody md-body>
-                                    <!--  <tr md-row md:select="doclist" data-md-on-select="log" md-on-deselect="doclist"  data-ng-repeat="doclist in doclist.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit"> -->
-                                    <tr md-row md-select="doclist" md-select-id="{{doclist.name}}" ng-repeat="doclist in doclist.data">
-                                     <th md-cell ></th>
-                                        <td md-cell>{{doclist.fistName}}</td>
-                                        <td md-cell>{{doclist.lastName}}</td>
-                                        <td md-cell>{{doclist.spec}}</td>
-                                        <td md-cell>{{doclist.avil}}</td>
-                                        <td md-cell>
-                                            <md-button class="md-fab md-mini"  aria-label="Favorite" ng-click="showAvaliability($event)" >
-                                                <span>+</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </md-table-container>
-                        <data-md-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{desserts.count}}" md-on-paginate="onPaginate" md-page-select></data-md-table-pagination>
-                    </md-content>
-                </md-card-content>
-                <md-card-actions layout="column" layout-align="start">
-                </md-card-actions>
-            </md-card>
+            <md-card layout="row">
+                <md-card flex>
+                    <!--  <md-card-title>
+                            <md-card-title-text flex>
+                                <span class="md-headline">Set Avalibility </span>
+                            </md-card-title-text>
+                        </md-card-title> -->
+                    <md-card-content>
+                        <div layout="row" layout-align="space-between end">
+                            <span>
+                                         <md-datepicker ng-model="date.from" md-placeholder="FROM"></md-datepicker>
+                                         <md-datepicker ng-model="date.to" md-placeholder="TO"></md-datepicker>
+                                </span>
+                        </div>
+                        <span flex></span>
+                        <div layout="column" layout-padding>
+                            <div layout-align="space-between center" layout="row">
+                                <div>
+                                    <md-button class="md-primary md-raised md-hue-1">week days</md-button>
+                                    <span> <md-checkbox ng-model="data.mon" aria-label="MON">MON</md-checkbox></span>
+                                    <span> <md-checkbox ng-model="data.thu" aria-label="SUN">THU</md-checkbox></span>
+                                    <span> <md-checkbox ng-model="data.wed" aria-label="SUN">WED</md-checkbox></span>
+                                    <span> <md-checkbox ng-model="data.thr" aria-label="SUN">THR</md-checkbox></span>
+                                    <span> <md-checkbox ng-model="data.fri" aria-label="SUN">FRI</md-checkbox></span>
+                                </div>
+                                <div>
+                                    <md-input-container>
+                                        <label>From time</label>
+                                        <input ng-model="user.fromTime" type="time" md-maxlength="4" size="4">
+                                    </md-input-container>
+                                    <md-input-container>
+                                        <label>To time</label>
+                                        <input ng-model="user.TOTime" type="time" md-maxlength="4" width="4" size="4">
+                                    </md-input-container>
+                                    <md-button class="md-fab md-mini md-primary" aria-label="Use Android">+</md-button>
+                                </div>
+                            </div>
+                            <div layout-align="space-between center" layout="row">
+                                <div>
+                                    <md-button class="md-primary md-raised md-hue-2">week ends</md-button>
+                                    <span> <md-checkbox ng-model="data.sut" aria-label="SUT">SUT</md-checkbox></span>
+                                    <span> <md-checkbox ng-model="data.sun" aria-label="SUN">SUN</md-checkbox></span>
+                                </div>
+                                 <div>
+                                    <md-input-container>
+                                        <label>From time</label>
+                                        <input ng-model="user.fromTime" type="time" md-maxlength="4" size="4">
+                                    </md-input-container>
+                                    <md-input-container>
+                                        <label>To time</label>
+                                        <input ng-model="user.TOTime" type="time" md-maxlength="4" width="4" size="4">
+                                    </md-input-container>
+                                     <md-button class="md-fab md-mini md-primary" aria-label="Use Android">+</md-button>
+                                </div>
+                            </div>
+                        </div>
         </div>
-    </md-content>
+        </md-card-content>
+        <!--  <md-card-actions layout="row" layout-align="end center" >
+                            <md-button>CLEAR</md-button>
+                            <md-button class="md-primary md-raised">SEARCH</md-button>
+                        </md-card-actions> -->
+        </md-card>
+        <md-card flex="30">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Set Calender</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <p>Avalible </p>
+                <div tiny-calendar today="Today" events="events"></div>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button>CLEAR</md-button>
+                <md-button class="md-primary md-raised">SEARCH</md-button>
+            </md-card-actions>
+        </md-card>
+        </md-card>
+</div>
+</md-content>
 </div>
