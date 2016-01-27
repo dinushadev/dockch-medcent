@@ -17,6 +17,21 @@
         self.querySearch = querySearch;
         self.selectedItemChange = selectedItemChange;
         self.searchTextChange = searchTextChange;
+
+         $scope.messages = [{
+         id: 1,
+         title: "Message A",
+         selected: false
+     }, {
+         id: 2,
+         title: "Message B",
+         selected: true
+     }, {
+         id: 3,
+         title: "Message C",
+         selected: true
+     }, ];
+
         // ******************************
         // Internal methods
         // ******************************

@@ -25,7 +25,8 @@
                     </md-autocomplete>
                 </md-card-content>
             </md-card>
-            <md-card layout="row">
+            <md-card layout="column">
+            <div layout="row">
                 <md-card flex>
                     <!--  <md-card-title>
                             <md-card-title-text flex>
@@ -68,42 +69,53 @@
                                     <span> <md-checkbox ng-model="data.sut" aria-label="SUT">SUT</md-checkbox></span>
                                     <span> <md-checkbox ng-model="data.sun" aria-label="SUN">SUN</md-checkbox></span>
                                 </div>
-                                 <div>
+                                <div>
                                     <md-input-container>
                                         <label>From time</label>
-                                        <input ng-model="user.fromTime" type="time" md-maxlength="4" size="4">
+                                        <input ng-model="user.fromTime" type="time" md-maxlength="4" maxlength="4" size="4" is="iron-input" />
                                     </md-input-container>
                                     <md-input-container>
                                         <label>To time</label>
-                                        <input ng-model="user.TOTime" type="time" md-maxlength="4" width="4" size="4">
+                                        <input ng-model="user.TOTime" type="time" md-maxlength="4" maxlength="4" size="4" step="" is="iron-input" />
                                     </md-input-container>
-                                     <md-button class="md-fab md-mini md-primary" aria-label="Use Android">+</md-button>
+                                    <md-button class="md-fab md-mini md-primary" aria-label="Use Android">+</md-button>
                                 </div>
                             </div>
                         </div>
+
+                        <div>
+                        <time-date-picker ng-model="dateValue" display-mode="time" ></time-date-picker>
+                            <md-divider></md-divider>
+                            <md-subheader class="md-no-sticky">Results</md-subheader>
+                            <md-list-item ng-repeat="message in messages">
+                                <!-- <md-checkbox ng-model="message.selected"></md-checkbox> -->
+                                 <p>10:01:2016-10:01:2016 <b> THU MON FRI  </b> 5.30 pm - 8.30 pm</p>
+                                  <i class="material-icons">delete</i>
+                            </md-list-item>
+                        </div>
+                        </md-card-content>
+                </md-card>
+                <md-card flex="30" layout="column" layout-align="center start">
+                    <md-card-title flex="10" >
+                        <md-card-title-text>
+                            <span >Avalibility in Calender</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content layout-align="center start">
+                   
+                        <div tiny-calendar today="Today" events="events"></div>
+                    </md-card-content>
+                   <!--  <md-card-actions layout="row" layout-align="end center">
+                        <md-button>CLEAR</md-button>
+                        <md-button class="md-primary md-raised">SEARCH</md-button>
+                    </md-card-actions> -->
+                </md-card>
+                </div>
+                 <md-card-actions layout="row" layout-align="end center" layout-padding>
+                        <md-button>CLEAR</md-button>
+                        <md-button class="md-primary md-raised">save</md-button>
+                    </md-card-actions>
+            </md-card>
         </div>
-        </md-card-content>
-        <!--  <md-card-actions layout="row" layout-align="end center" >
-                            <md-button>CLEAR</md-button>
-                            <md-button class="md-primary md-raised">SEARCH</md-button>
-                        </md-card-actions> -->
-        </md-card>
-        <md-card flex="30">
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline">Set Calender</span>
-                </md-card-title-text>
-            </md-card-title>
-            <md-card-content>
-                <p>Avalible </p>
-                <div tiny-calendar today="Today" events="events"></div>
-            </md-card-content>
-            <md-card-actions layout="row" layout-align="end center">
-                <md-button>CLEAR</md-button>
-                <md-button class="md-primary md-raised">SEARCH</md-button>
-            </md-card-actions>
-        </md-card>
-        </md-card>
-</div>
-</md-content>
+    </md-content>
 </div>
