@@ -29,6 +29,15 @@ angular.module('angularMaterialAdmin', ['ngAnimate', 'ngCookies', 'ngTouch',
           title: 'Profile'
         }
       })
+      .state('home.addappointment', {
+        url: '/addappointment',
+        controller: 'AddAppointmentController',
+        controllerAs: 'vm',
+        templateUrl: 'app/views/addappointment.html',
+        data: {
+          title: 'Table'
+        }
+      })
       .state('home.appointment', {
         url: '/appointment',
         controller: 'AppointmentController',

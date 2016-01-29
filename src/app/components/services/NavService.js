@@ -20,9 +20,9 @@
         sref: '.setdoccalendar'
       },
       {
-        name: 'APPOINTMENT',
+        name: 'ADD APPOINTMENT',
         icon: 'note add',
-        sref: '.appointment'
+        sref: '.addappointment'
       },
       {
         name: 'PROFILE',
@@ -33,6 +33,11 @@
         name: 'NOTIFICATION',
         icon: 'notification_module',
         sref: '.notification'
+      }, 
+      {
+        name: 'APPOINTMENT',
+        icon: 'assessment',
+        sref: '.appointment'
       },
       {
         name: 'REPORTS',

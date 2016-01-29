@@ -2,12 +2,12 @@
 
     angular
         .module('app')
-        .controller('AppointmentController', [
+        .controller('AddAppointmentController', [
             '$timeout', '$q', '$scope', '$http', '$mdMedia', '$mdDialog',
-            AppointmentController
+            AddAppointmentController
         ]);
 
-    function AppointmentController($timeout, $q, $scope, $http, $mdMedia, $mdDialog) {
+    function AddAppointmentController($timeout, $q, $scope, $http, $mdMedia,$mdDialog) {
         var vm = this;
 
 
@@ -15,24 +15,7 @@
         vm.searchText = null;
         vm.querySearch = querySearch;
         vm.disableCaching = true;
-
-        $scope.appointmetList = [{
-            "patient": "Kasun Abc",
-            "date": "2016-01-25",
-            "doctor": "Hemal Perera",
-            "appNo": "21"
-        }, {
-           "patient": "Nipuna Perera",
-            "date": "2016-01-25",
-            "doctor": "Kasun Iddamalgoda",
-            "appNo": "21"
-        }, {
-            "patient": "Prabath wani",
-            "date": "2016-01-25",
-            "doctor": "Vinoth De Cilva",
-            "appNo": "21"
-        }];
-
+   
         function querySearch(query) {
             var results = query ? vm.countries.filter(createFilterFor(query)) : [],
                 deferred;
@@ -61,7 +44,7 @@
         $scope.showAvaliability = function(ev) {
             var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
             $mdDialog.show({
-                    controller: AppointmentController,
+                    controller: AddAppointmentController,
                     templateUrl: 'app/views/partials/docAvailability.html',
                     parent: angular.element(document.body),
                     targetEvent: ev,

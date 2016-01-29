@@ -1,0 +1,90 @@
+<div ng-cloak>
+    <md-content class="md-padding" layout="row" layout-wrap layout-align="center start" layout-xs="column" ng-controller="AddAppointmentController">
+        <div flex="100" flex-xs="100" layout="column">
+            <md-card>
+                <!--  <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"> -->
+                <md-card-title>
+                    <md-card-title-text>
+                        <!--       <span class="md-headline">Action buttons</span> -->
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <div ng-include src="'app/views/partials/docSearch.html'" />
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                </md-card-actions>
+            </md-card>
+            <md-card>
+                <!--    <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"> -->
+                <md-card-title>
+                    <md-card-title-text>
+                        <span>DOCTORS</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <md-content laout="column" flex>
+                        <!--  <md-toolbar class="md-table-toolbar md-default" ng-show="!selected.length">
+                            <div class="md-toolbar-tools">
+         
+                                <span flex></span>
+                                <md-button ng-click="hideCheckboxes = !hideCheckboxes">{{hideCheckboxes ? 'Enable Selection' : 'Disable Selection'}}</md-button>
+                                <md-button ng-click="hideHead = !hideHead">{{hideHead ? 'Show Head' : 'Decapitate'}}</md-button>
+                                <md-button ng-click="blah = !blah">{{blah ? 'turn on' : 'turn off'}}</md-button>
+                                <md-button ng-click="loadStuff()">Load</md-button>
+                                <md-button class="md-icon-button">
+                                    <md-icon>filter_list</md-icon>
+                                </md-button>
+                                <md-button class="md-icon-button">
+                                    <md-icon>more_vert</md-icon>
+                                </md-button>
+                            </div>
+                        </md-toolbar> -->
+                      <!--   <md-toolbar class="md-table-toolbar alternate" ng-show="selected.length">
+                            <div class="md-toolbar-tools">
+                                <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
+                                <span flex></span>
+                                <md-button class="md-icon-button">
+                                    <md-icon>delete</md-icon>
+                                </md-button>
+                                <md-button class="md-icon-button">
+                                    <md-icon>more_vert</md-icon>
+                                </md-button>
+                            </div>
+                        </md-toolbar> -->
+                        <md-table-container>
+                            <table md-table ng-model="selected" md-progress="promise">
+                                <thead md-head md-order="query.order" md-on-reorder="onReorder">
+                                    <tr md-row>
+                                         <th md-column ></th>
+                                        <th md-column md:order:by="fistName"><span>FIST NAME</span></th>
+                                        <th md-column md:order:by="lastName"><span>LAST NAME</span></th>
+                                        <th md-column data-md-numeric data-md-order-by="calories.value" data-md-desc><span>SPICIALIZED</span></th>
+                                        <th md-column data-md-numeric data-md-order-by="fat.value"><span>AVAILABILITY</span></th>
+                                        <th md-column data-md-numeric data-md-order-by="protein.value"><span>[RESERVE]</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody md-body>
+                                    <!--  <tr md-row md:select="doclist" data-md-on-select="log" md-on-deselect="doclist"  data-ng-repeat="doclist in doclist.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit"> -->
+                                    <tr md-row md-select="doclist" md-select-id="{{doclist.name}}" ng-repeat="doclist in doclist.data">
+                                     <th md-cell ></th>
+                                        <td md-cell>{{doclist.fistName}}</td>
+                                        <td md-cell>{{doclist.lastName}}</td>
+                                        <td md-cell>{{doclist.spec}}</td>
+                                        <td md-cell>{{doclist.avil}}</td>
+                                        <td md-cell>
+                                            <md-button class="md-fab md-mini"  aria-label="Favorite" ng-click="showAvaliability($event)" >
+                                                <span>+</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </md-table-container>
+                        <data-md-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{desserts.count}}" md-on-paginate="onPaginate" md-page-select></data-md-table-pagination>
+                    </md-content>
+                </md-card-content>
+                <md-card-actions layout="column" layout-align="start">
+                </md-card-actions>
+            </md-card>
+        </div>
+    </md-content>
+</div>

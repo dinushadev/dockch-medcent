@@ -1,0 +1,49 @@
+<md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="By Doctor">
+            <md-content class="md-padding" layout="row" layout-align="space-around center">
+                <md-autocomplete ng-disabled="ctrl.isDisabled" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item)" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.name" md-min-length="100" placeholder="Pick a Doctor" md-menu-class="autocomplete-custom-template" flex="60">
+                    <md-item-template>
+                        <span class="item-title">
+                                             <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
+
+                                 <span> {{item.name}} </span>
+                        </span>
+                        <span class="item-metadata">
+                                <span class="item-metastat">
+                                  <strong>{{item.watchers}}</strong> watchers
+                                </span>
+                        </span>
+                    </md-item-template>
+                </md-autocomplete>
+                <md-datepicker ng-model="myDate" md-placeholder="Appoinment date"></md-datepicker>
+                <md-button class="md-primary md-raised md-hue-2">Find</md-button>
+            </md-content>
+        </md-tab>
+        <md-content class="md-padding" >
+            <md-tab label="By Patient" >
+                <md-content class="md-padding" layout="row" layout-align="space-around center">
+                    <md-input-container flex="30">
+                        <label>Fist name</label>
+                        <input ng-model="user.name" type="text">
+                    </md-input-container>
+                    <md-input-container flex="30">
+                        <label>Last name</label>
+                        <input ng-model="user.name" type="text">
+                    </md-input-container>
+                    <md-datepicker ng-model="myDate" md-placeholder="Appoinment date"></md-datepicker>
+                    <md-button class="md-primary md-raised md-hue-2">Find</md-button>
+                </md-content>
+            </md-tab>
+            </md-content>
+            <md-tab label="By Appointmet">
+                  <md-content class="md-padding"  layout="row" layout-align="space-around center" >
+                      <md-input-container flex="30">
+                        <label>Appointment ID</label>
+                        <input ng-model="user.appoinmentId" type="text">
+                    </md-input-container>
+                    <md-button class="md-primary md-raised md-hue-2">Find</md-button>
+                </md-content>
+            </md-tab>
+    </md-tabs>
+    </md-content>
