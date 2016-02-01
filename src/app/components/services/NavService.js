@@ -26,8 +26,8 @@
       },
       {
         name: 'PROFILE',
-        icon: 'view_module',
-        sref: '.test'
+        icon: 'person',
+        sref: '.profile'
       },
       {
         name: 'NOTIFICATION',
