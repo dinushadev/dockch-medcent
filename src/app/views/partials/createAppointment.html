@@ -1,0 +1,38 @@
+    <md-card-content>
+    <div layout="row">
+       <md-input-container flex>
+                <label>Phone NO</label>
+                <input ng-model="vm.user.phoneNo"
+                       placeholder="Phone NO">
+            </md-input-container>
+               <md-input-container flex>
+                <label>NIC/PASSPORT</label>
+                <input ng-model="vm.user.firstName"
+                       placeholder="NIC/PASSPORT">
+            </md-input-container>
+        
+    </div>
+    <div layout="row">
+    
+             <md-input-container>
+        <label>District</label>
+        <md-select ng-model="ctrl.userState">
+          <md-option ng-repeat="" value="{{state.abbrev}}">
+            {{state.abbrev}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+</div>
+
+       <md-input-container flex>
+                <label>FIST NAME</label>
+                <input ng-model="vm.user.phoneNo">
+            </md-input-container>
+               <md-input-container flex>
+                <label>LAST NAME</label>
+                <input ng-model="vm.user.firstName" >
+            </md-input-container>
+        
+    </div>
+    </md-card-content>

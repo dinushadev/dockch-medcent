@@ -24,15 +24,18 @@
                             <span class="md-headline">Avaliability</span>
                         </md-card-title-text>
                     </md-card-title>
-                    <md-card-content>
-                        <p>Avalible </p>
-                        <md-button ng-click="cancel()">
+                    <md-card-content >
+                        <div ng-include src="'app/views/partials/createAppointment.html'"/>
+
+                    </md-card-content>
+                      <md-card-actions layout="row" layout-align="end">
+                     <md-button ng-click="cancel()">
                             Close
                         </md-button>
                         <md-button class="md-primary md-raised" ng-click="cancel()">
                             Make Apointmet
                         </md-button>
-                    </md-card-content>
+                </md-card-actions>
                 </md-card>
             </div>
         </md-content>
