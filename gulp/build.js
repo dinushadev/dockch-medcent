@@ -19,7 +19,7 @@ gulp.task('partials', function () {
       quotes: true
     }))
     .pipe($.angularTemplatecache('templateCacheHtml.js', {
-      module: 'angularMaterialAdmin'
+      module: 'DockchMC'
     }))
     .pipe(gulp.dest(paths.tmp + '/partials/'));
 });
