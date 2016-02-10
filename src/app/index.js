@@ -16,6 +16,7 @@ angular.module('DockchMC', ['ngAnimate', 'ngCookies', 'ngTouch',
       .state('home.doclist', {
         url: '/doclist',
         templateUrl: 'app/views/doclist.html',
+         controllerAs: 'vm',
         data: {
           title: 'DocList'
         }

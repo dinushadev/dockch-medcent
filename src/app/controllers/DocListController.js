@@ -3,128 +3,72 @@
     angular
         .module('app')
         .controller('docListController', [
-            '$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$mdMedia','$http',
+            '$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$mdMedia', '$http',
             docListController
         ]);
 
     function docListController($mdEditDialog, $q, $scope, $timeout, $mdDialog, $mdMedia, $http) {
-
-
-        $scope.selected = [];
-
-        $scope.query = {
+        var vm = this;
+        vm.title = "DOCTORS";
+        vm.docLists = [];
+        vm.selected = [];
+        vm.query = {
             order: 'name',
             limit: 5,
             page: 1
         };
 
-        $scope.columns = [{
-                name: 'DDD',
-                orderBy: 'name',
-                unit: '100g serving'
-            }, {
-                descendFirst: true,
-                name: 'Type',
-                orderBy: 'type'
-            }, {
-                name: 'Calories',
-                numeric: true,
-                orderBy: 'calories.value'
-            }, {
-                name: 'Fat',
-                numeric: true,
-                orderBy: 'fat.value',
-                unit: 'g'
-            },
-            /* {
-               name: 'Carbs',
-               numeric: true,
-               orderBy: 'carbs.value',
-               unit: 'g'
-             }, */
-            {
-                name: 'PPPPP',
-                numeric: true,
-                orderBy: 'protein.value',
-                trim: true,
-                unit: 'g'
-            },
-            /* {
-               name: 'Sodium',
-               numeric: true,
-               orderBy: 'sodium.value',
-               unit: 'mg'
-             }, {
-               name: 'Calcium',
-               numeric: true,
-               orderBy: 'calcium.value',
-               unit: '%'
-             }, */
-            {
-                name: 'Iron',
-                numeric: true,
-                orderBy: 'iron.value',
-                unit: '%'
-            }, {
-                name: 'Comments',
-                orderBy: 'comment'
-            }
-        ];
 
 
- $http.get('app/doclist.json').then(function (doclist) {
-    $scope.doclist = doclist.data;
-    // $timeout(function () {
-    //   $scope.desserts = desserts.data;
-    // }, 1000);
-  });
-     
+        $http.get('app/doclist.json').then(function(result) {
+           // $scope.doclists = result.data;
+            vm.docLists = result.data;
 
-        $scope.getTypes = function() {
+        });
+
+
+        vm.getTypes = function() {
             return ['Candy', 'Ice cream', 'Other', 'Pastry'];
         };
 
-        $scope.onPaginate = function(page, limit) {
+        vm.onPaginate = function(page, limit) {
             // $scope.$broadcast('md.table.deselect');
 
             console.log('Scope Page: ' + $scope.query.page + ' Scope Limit: ' + $scope.query.limit);
             console.log('Page: ' + page + ' Limit: ' + limit);
 
-            $scope.promise = $timeout(function() {
+            vm.promise = $timeout(function() {
 
             }, 2000);
         };
 
-        $scope.deselect = function(item) {
+        vm.deselect = function(item) {
             console.log(item.name, 'was deselected');
         };
 
-        $scope.log = function(item) {
+        vm.log = function(item) {
             console.log(item.name, 'was selected');
         };
 
-        $scope.loadStuff = function() {
-            $scope.promise = $timeout(function() {
+        vm.loadStuff = function() {
+            vm.promise = $timeout(function() {
 
             }, 2000);
         };
 
-        $scope.onReorder = function(order) {
+        vm.onReorder = function(order) {
 
             console.log('Scope Order: ' + $scope.query.order);
             console.log('Order: ' + order);
 
-            $scope.promise = $timeout(function() {
-
-            }, 2000);
         };
 
 
         // Doc serch and add popup window
 
-        $scope.status = '  ';
-        $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
-        $scope.showAlert = function(ev) {
+        vm.status = '  ';
+        vm.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
+        vm.showAlert = function(ev) {
             // Appending dialog to document.body to cover sidenav in docs app
             // Modal dialogs should fully cover application
             // to prevent interaction outside of dialog
@@ -142,9 +86,8 @@
 
 
 
-
-        $scope.searchAandAddDoc = function(ev) {
-            var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+        vm.searchAandAddDoc = function(ev) {
+            var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && vm.customFullscreen;
             $mdDialog.show({
                     controller: DialogController,
                     templateUrl: 'app/views/partials/searchAndAddDoc.html',
@@ -154,14 +97,14 @@
                     fullscreen: useFullScreen
                 })
                 .then(function(answer) {
-                    $scope.status = 'You said the information was "' + answer + '".';
+                    vm.status = 'You said the information was "' + answer + '".';
                 }, function() {
-                    $scope.status = 'You cancelled the dialog.';
+                    vm.status = 'You cancelled the dialog.';
                 });
             $scope.$watch(function() {
                 return $mdMedia('xs') || $mdMedia('sm');
             }, function(wantsFullScreen) {
-                $scope.customFullscreen = (wantsFullScreen === true);
+                vm.customFullscreen = (wantsFullScreen === true);
             });
         };
 
