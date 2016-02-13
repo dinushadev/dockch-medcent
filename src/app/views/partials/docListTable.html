@@ -1,0 +1,30 @@
+<md-card-content>
+    <md-table-container>
+        <table data-md-table data-md-row-select="!vm.hideCheckboxes" data-ng-model="vm.selected" md-progress="promise">
+            <thead ng-if="!vm.hideHead" md-head data-md-order="vm.query.order" md-on-reorder="vm.onReorder">
+                <tr md-row>
+                    <th md-column md:order:by="name"><span>FIST NAME</span></th>
+                    <th md-column md:order:by="type"><span>LAST NAME</span></th>
+                    <th md-column data-md-numeric data-md-order-by="calories.value" data-md-desc><span>SPICIALIZED</span></th>
+                    <th md-column data-md-numeric data-md-order-by="fat.value"><span>REG NO</span></th>
+                    <th md-column data-md-numeric data-md-order-by="protein.value"><span>AVILABILITY</span></th>
+                    <th md-column data-md-numeric data-md-order-by="protein.value"><span>[ADD]</span></th>
+                </tr>
+            </thead>
+            <tbody md-body>
+                <tr md-row md:select="doclist" data-md-on-select="log" md-on-deselect="doclist" x-md-auto-select="!blah" ng-disabled="vm.doclist.calories.value > 400" data-ng-repeat="doclist in  vm.docLists.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+                    <td md-cell>{{doclist.fistName}}</td>
+                    <td md-cell>{{doclist.lastName}}</td>
+                    <td md-cell>{{doclist.spec}}</td>
+                    <!-- <td md-cell>{{dessert.carbs.value}}</td> -->
+                    <td md-cell>{{doclist.regNo}}</td>
+                    <!-- <td md-cell>{{dessert.sodium.value}}</td> -->
+                    <!-- <td md-cell>{{dessert.calcium.value}}%</td> -->
+                    <td md-cell hide-sm>{{doclist.avil}}</td>
+                    <!-- <td md-cell ng-click="editComment($event, doclist)" ng-class="{'md-placeholder': !dessert.comment}"></td> -->
+                </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+    <data-md-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{doclist.count}}" md-on-paginate="vm.onPaginate" md-page-select></data-md-table-pagination>
+</md-card-content>

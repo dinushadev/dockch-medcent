@@ -2,12 +2,12 @@
 
     angular
          .module('app')
-         .controller('MainController', [
-            'navService', '$mdSidenav', '$mdBottomSheet', '$log', '$q', '$state', '$mdToast',
-            MainController
+         .controller('DocProfileController', [
+            'navService', '$mdSidenav', '$mdBottomSheet', '$log', '$q', '$state', 
+            DocProfileController
          ]);
 
-    function MainController(navService, $mdSidenav, $mdBottomSheet, $log, $q, $state, $mdToast) {
+    function DocProfileController(navService, $mdSidenav, $mdBottomSheet, $log, $q, $state) {
  
       var vm = this;
       vm.menuItems = [ ];

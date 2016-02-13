@@ -1,4 +1,4 @@
-<md-dialog aria-label="addDocDialog" ng-cloak  ng-controller="docListController">
+<md-dialog aria-label="addDocDialog" ng-cloak ng-controller="docListController as vm">
     <form>
         <md-toolbar>
             <div class="md-toolbar-tools">
@@ -11,46 +11,35 @@
         </md-toolbar>
         <md-dialog-content>
             <div class="md-dialog-content">
-                <md-card>
-                    <md-card-content>
-                      <div ng-include src="'app/views/partials/docSearch.html'"/>
-                    </md-card-content>
-                </md-card>
-                <md-card>
-                    <md-card-content>
-                             <md-table-container>
-                            <table data-md-table data-md-row-select="!hideCheckboxes" data-ng-model="selected" md-progress="promise">
-                      
-                                <thead ng-if="!hideHead" md-head data-md-order="query.order" md-on-reorder="onReorder">
-                                    <tr md-row>
-                                        <th md-column md:order:by="name"><span>FIST NAME</span></th>
-                                        <th md-column md:order:by="type"><span>LAST NAME</span></th>
-                                        <th md-column data-md-numeric data-md-order-by="calories.value" data-md-desc><span>SPICIALIZED</span></th>
-                                        <th md-column data-md-numeric data-md-order-by="fat.value"><span>REG NO</span></th>
-                                        <th md-column data-md-numeric data-md-order-by="protein.value"><span>AVILABILITY</span></th>
-                                             <th md-column data-md-numeric data-md-order-by="protein.value"><span>[ADD]</span></th>
-                                        
-                                    </tr>
-                                </thead>
-                                <tbody md-body>
-                                    <tr md-row md:select="doclist" data-md-on-select="log" md-on-deselect="doclist" x-md-auto-select="!blah" ng-disabled="doclist.calories.value > 400" data-ng-repeat="doclist in doclist.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-                                        <td md-cell>{{doclist.fistName}}</td>
-                                        
-                                        <td md-cell>{{doclist.lastName}}</td>
-                                        <td md-cell>{{doclist.spec}}</td>
-                                        <!-- <td md-cell>{{dessert.carbs.value}}</td> -->
-                                        <td md-cell>{{doclist.regNo}}</td>
-                                        <!-- <td md-cell>{{dessert.sodium.value}}</td> -->
-                                        <!-- <td md-cell>{{dessert.calcium.value}}%</td> -->
-                                        <td md-cell hide-sm>{{doclist.avil}}</td>
-                                        <!-- <td md-cell ng-click="editComment($event, doclist)" ng-class="{'md-placeholder': !dessert.comment}"></td> -->
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </md-table-container>
-                        <data-md-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{doclist.count}}" md-on-paginate="onPaginate" md-page-select></data-md-table-pagination>
-                    </md-card-content>
-                </md-card>
+                <div ng-cloak>
+                    <md-content>
+                        <md-tabs md-dynamic-height md-border-bottom>
+                            <md-tab label="SEARCH DOC">
+                                <md-content class="md-padding">
+                                    <md-card>
+                                        <md-card-content>
+                                            <div ng-include src="'app/views/partials/docSearch.html'" />
+                                        </md-card-content>
+                                    </md-card>
+                                    <div ng-if="!vm.docLists.data" layout-align="center center" layout="row">
+                                        <md-button class="md-primary md-raised">ADD NEW DOC</md-button>
+                                    </div>
+                                    <div ng-if="vm.docLists.data">
+                                        <md-card>
+                                            <div ng-include src="'app/views/partials/docListTable.html'" />
+                                        </md-card>
+                                    </div>
+                                </md-content>
+                            </md-tab>
+                             <md-tab label="ADD NEW DOC">
+                               <md-content class="md-padding">
+                               <div ng-include src="'app/views/partials/addNewDoc.html'" />
+                              </md-content>
+                             </md-tab>
+
+                        </md-tabs>
+                    </md-content>
+                </div>
             </div>
         </md-dialog-content>
         <md-dialog-actions layout="row">

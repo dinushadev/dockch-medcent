@@ -1,4 +1,6 @@
-<md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding ng-controller="DocSearchController as vm" >
+
+<md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding  >
+     
     <div>
         <md-input-container>
             <label>fist name</label>
@@ -16,9 +18,17 @@
                 </md-option>
             </md-select>
         </md-input-container>
+         <md-input-container>
+            <label>Reg No</label>
+            <input ng-model="vm.doc.regno" type="text">
+        </md-input-container>
+         <md-input-container>
+            <label>Mobile</label>
+            <input ng-model="vm.doc.mobile" type="text">
+        </md-input-container>
+     <md-button>CLEAR</md-button>
+        <md-button class="md-primary md-raised">SAVE</md-button>
     </div>
-    <md-card-actions layout="row" layout-align="end center">
-        <md-button>CLEAR</md-button>
-        <md-button class="md-primary md-raised">SEARCH</md-button>
-    </md-card-actions>
+ 
+      
 </md-content>

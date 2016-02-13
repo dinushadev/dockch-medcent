@@ -20,11 +20,11 @@
 
 
 
-        $http.get('app/doclist.json').then(function(result) {
+      /*  $http.get('app/doclist.json').then(function(result) {
            // $scope.doclists = result.data;
             vm.docLists = result.data;
 
-        });
+        });*/
 
 
         vm.getTypes = function() {
