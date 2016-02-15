@@ -17,12 +17,16 @@
                             <md-tab label="SEARCH DOC">
                                 <md-content class="md-padding">
                                     <md-card>
-                                        <md-card-content>
-                                            <div ng-include src="'app/views/partials/docSearch.html'" />
-                                        </md-card-content>
+                                        <div ng-include src="'app/views/partials/docSearch.html'" />
                                     </md-card>
                                     <div ng-if="!vm.docLists.data" layout-align="center center" layout="row">
-                                        <md-button class="md-primary md-raised">ADD NEW DOC</md-button>
+                                        <md-card flex>
+                                            <div style="padding: 25px; text-align: center;">
+                                                <div >If you can not find the doctor please add new doc</div>
+                                                <br/>
+                                                <md-button class="md-primary md-raised" ng-click="removeTab( tab )" ng-disabled="tabs.length <= 1">add new doc</md-button>
+                                            </div>
+                                        </md-card>
                                     </div>
                                     <div ng-if="vm.docLists.data">
                                         <md-card>
@@ -31,22 +35,14 @@
                                     </div>
                                 </md-content>
                             </md-tab>
-                             <md-tab label="ADD NEW DOC">
-                               <md-content class="md-padding">
-                               <div ng-include src="'app/views/partials/addNewDoc.html'" />
-                              </md-content>
-                             </md-tab>
-
+                            <md-tab label="ADD NEW DOC">
+                                <md-content class="md-padding">
+                                    <div ng-include src="'app/views/partials/addNewDoc.html'" />
+                                </md-content>
+                            </md-tab>
                         </md-tabs>
                     </md-content>
                 </div>
             </div>
-        </md-dialog-content>
-        <md-dialog-actions layout="row">
-            <span flex></span>
-            <md-button ng-click="answer('not useful')">
-                CLOSE
-            </md-button>
-        </md-dialog-actions>
     </form>
 </md-dialog>

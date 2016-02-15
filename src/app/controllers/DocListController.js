@@ -3,11 +3,11 @@
     angular
         .module('app')
         .controller('docListController', [
-            '$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$mdMedia', '$http',
+            '$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$mdMedia', '$http','$mdToast','$rootScope',
             docListController
         ]);
 
-    function docListController($mdEditDialog, $q, $scope, $timeout, $mdDialog, $mdMedia, $http) {
+    function docListController($mdEditDialog, $q, $scope, $timeout, $mdDialog, $mdMedia, $http, $mdToast,$rootScope) {
         var vm = this;
         vm.title = "DOCTORS";
         vm.docLists = [];
@@ -18,6 +18,7 @@
             page: 1
         };
 
+        vm.showSimpleToast  =   $rootScope.showSimpleToast ;
 
 
       /*  $http.get('app/doclist.json').then(function(result) {

@@ -3,18 +3,18 @@
     angular
          .module('app')
          .controller('MainController', [
-            'navService', '$mdSidenav', '$mdBottomSheet', '$log', '$q', '$state', '$mdToast',
+            'navService', '$mdSidenav', '$mdBottomSheet', '$log', '$q', '$state', '$mdToast','$rootScope',
             MainController
          ]);
 
-    function MainController(navService, $mdSidenav, $mdBottomSheet, $log, $q, $state, $mdToast) {
+    function MainController(navService, $mdSidenav, $mdBottomSheet, $log, $q, $state, $mdToast, $rootScope) {
  
       var vm = this;
       vm.menuItems = [ ];
       vm.selectItem = selectItem;
       vm.toggleItemsList = toggleItemsList;
       vm.title = $state.current.data.title;
- //     vm.showSimpleToast = showSimpleToast;
+     $rootScope.showSimpleToast = showSimpleToast;
 
       navService
         .loadAllItems()
@@ -37,6 +37,17 @@
         vm.toggleItemsList();
       //  vm.showSimpleToast(vm.title);
       }
+
+     
+        function showSimpleToast() {
+      $mdToast.show(
+        $mdToast.simple()
+          .content("save successful fdfeer sdfe vdase sdfdfvsdsd seee")
+          .hideDelay(20000)
+          .position('top right')
+      );
+    };
+
 
     }
 
